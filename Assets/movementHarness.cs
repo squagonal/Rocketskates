@@ -2,17 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class movementHarness : MonoBehaviour, IMovementHarness, ISkaterHarness;
+public class movementHarness : MonoBehaviour, IMovementHarness, ISkaterHarness
 {
     Vector2  movementDirection;
     Rigidbody2D rigidBody;
     Collider2D collider;
     [SerializeField]
     Vector3 speed;
+    [SerializeField]
+    Vector3 gravity;
+    Vector3 ISkaterHarness.gravity { get => gravity; set => gravity = value; }
+    Vector2 gravDir;
     public int rotationValue = 0;
     [SerializeField]
     public float jumpPower;
     bool grounded = true;
+    bool ISkaterHarness.grounded { get => grounded; set => grounded = value; }
 
     float ISkaterHarness.jumpPower { get => jumpPower; set => jumpPower = value; }
     Transform ISkaterHarness.transform { get => transform; }
@@ -50,19 +55,21 @@ public class movementHarness : MonoBehaviour, IMovementHarness, ISkaterHarness;
     }
     public void Jump(){
         if (grounded == true) {
-          rigidBody.AddForce(transform.up*((speed.x+3)*jumpPower));
-          grounded = false;
+          rigidBody.AddForce(transform.up*((speed.x*15+1)+jumpPower));
       }
     }
 
     void FixedUpdate()
     {
+        gravDir = -transform.up;
         collider.enabled = false;
-        var hips = Physics2D.Raycast(transform.position, Vector2.down, 1);
+        var hips = Physics2D.Raycast(gravDir, -transform.up, 1);
         collider.enabled = true;
         Debug.DrawLine(transform.position, transform.position+Vector3.down*1, Color.red, 0.1f);
         if(hips){
             grounded = true; 
+        } else { 
+            grounded = false;
         }
         if(grounded == true){
         rigidBody.AddForce(movementDirection*speed);
@@ -71,5 +78,8 @@ public class movementHarness : MonoBehaviour, IMovementHarness, ISkaterHarness;
         }
         rigidBody.rotation+= rotationValue;
         Debug.Log(rigidBody.rotation);
+    }
+    void ISkaterHarness.gravswap(){
+        rigidBody.AddForce(gravDir*gravity);
     }
 }
