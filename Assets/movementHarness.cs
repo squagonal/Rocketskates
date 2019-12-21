@@ -2,19 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class movementHarness : MonoBehaviour, IMovementHarness
+public class movementHarness : MonoBehaviour, IMovementHarness, ISkaterHarness
 {
     Vector2  movementDirection;
     Rigidbody2D rigidBody;
+    Collider2D collider;
     [SerializeField]
-    Vector2 speed;
+    Vector3 speed;
+    public int rotationValue = 0;
     [SerializeField]
-    float jumpPower;
+    public float jumpPower;
     bool grounded = true;
     // Start is called before the first frame update
     void Awake()
     {
         rigidBody = gameObject.GetComponent<Rigidbody2D>();
+        collider = gameObject.GetComponent<Collider2D>();
     }
 
     // Update is called once per frame
@@ -25,34 +28,43 @@ public class movementHarness : MonoBehaviour, IMovementHarness
 
     public void setDirection(Vector2 direction){
         movementDirection = direction;
-        Debug.Log(movementDirection + "movement harness");
     }
 
     public void skateSpeedUp(){
-        while(speed.x <= 25){
-            speed.x += 10;
+        speed.x = 0;
+        while(speed.x < 15){
+            speed.x += 1;
         }
 
         
     }
     public void skateSpeedDown(){
-        if(speed.x>6){
-            speed.x -= 4;
+        if(speed.x > 0){
+           speed.x -= 5;
         }
     }
     public void Jump(){
         if (grounded == true) {
-          rigidBody.AddForce(transform.up*jumpPower);
+          rigidBody.AddForce(transform.up*((speed.x+3)*jumpPower));
           grounded = false;
       }
     }
 
     void FixedUpdate()
     {
-        rigidBody.AddForce(movementDirection*speed);
-        if (rigidBody.velocity.y == 0)
-        {
-            grounded = true;
+        collider.enabled = false;
+        var hips = Physics2D.Raycast(transform.position, Vector2.down, 1);
+        collider.enabled = true;
+        Debug.DrawLine(transform.position, transform.position+Vector3.down*1, Color.red, 0.1f);
+        if(hips){
+            grounded = true; 
         }
+        if(grounded == true){
+        rigidBody.AddForce(movementDirection*speed);
+        } else {
+            rigidBody.AddForce(movementDirection*speed/2);
+        }
+        rigidBody.rotation+= rotationValue;
+        Debug.Log(rigidBody.rotation);
     }
 }
