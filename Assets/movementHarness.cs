@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class movementHarness : MonoBehaviour
+public class movementHarness : MonoBehaviour, IMovementHarness
 {
     Vector2  movementDirection;
     Rigidbody2D rigidBody;
