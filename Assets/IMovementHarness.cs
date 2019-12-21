@@ -5,4 +5,6 @@ using UnityEngine;
 internal interface IMovementHarness
 {
     void setDirection(Vector2 direction);
+    void Jump();
+    
 }

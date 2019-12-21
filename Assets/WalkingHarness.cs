@@ -29,5 +29,8 @@ public class WalkingHarness : MonoBehaviour, IMovementHarness
     {
         rbody.AddForce(direction*force, ForceMode2D.Impulse);
     }
-
+    public void Jump()
+    {
+        Debug.Log("No Jump 4 u");
+    }
 }

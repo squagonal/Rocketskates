@@ -40,7 +40,7 @@ public class movementHarness : MonoBehaviour
             speed.x -= 4;
         }
     }
-    public void jump(){
+    public void Jump(){
         if (grounded == true) {
           rigidBody.AddForce(transform.up*jumpPower);
           grounded = false;
