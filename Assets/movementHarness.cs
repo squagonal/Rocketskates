@@ -8,6 +8,9 @@ public class movementHarness : MonoBehaviour
     Rigidbody2D rigidBody;
     [SerializeField]
     Vector2 speed;
+    [SerializeField]
+    float jumpPower;
+    bool grounded = true;
     // Start is called before the first frame update
     void Awake()
     {
@@ -37,9 +40,19 @@ public class movementHarness : MonoBehaviour
             speed.x -= 4;
         }
     }
+    public void jump(){
+        if (grounded == true) {
+          rigidBody.AddForce(transform.up*jumpPower);
+          grounded = false;
+      }
+    }
 
     void FixedUpdate()
     {
         rigidBody.AddForce(movementDirection*speed);
+        if (rigidBody.velocity.y == 0)
+        {
+            grounded = true;
+        }
     }
 }

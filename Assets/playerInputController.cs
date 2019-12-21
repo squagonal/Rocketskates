@@ -17,7 +17,7 @@ public class playerInputController : MonoBehaviour
     {
         movementDirection = new Vector2();
         if (Input.GetKey("w")) {
-            movementDirection += Vector2.up;
+            movementHarness.jump();
         }
         if (Input.GetKey("s"))
         {
