@@ -5,37 +5,41 @@ using UnityEngine;
 public class movementHarness : MonoBehaviour
 {
     Vector2  movementDirection;
+    Rigidbody2D rigidBody;
+    [SerializeField]
+    Vector2 speed;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        
+        rigidBody = gameObject.GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        movementDirection = new Vector2();
-        if (Input.GetKeyDown("w")) {
-            movementDirection += Vector2.up;
+        
+    }
+
+    public void setDirection(Vector2 direction){
+        movementDirection = direction;
+        Debug.Log(movementDirection + "movement harness");
+    }
+
+    public void skateSpeedUp(){
+        while(speed.x <= 25){
+            speed.x += 10;
         }
-        if (Input.GetKeyDown("s"))
-        {
-            movementDirection += Vector2.down;
+
+        
+    }
+    public void skateSpeedDown(){
+        if(speed.x>6){
+            speed.x -= 4;
         }
-        if (Input.GetKeyDown("a"))
-        {
-            movementDirection += Vector2.left;
-        }
-        if (Input.GetKeyDown("d"))
-        {
-            movementDirection += Vector2.right;
-        }
-        movementDirection.Normalize();
-        Debug.Log(movementDirection);
     }
 
     void FixedUpdate()
     {
-
+        rigidBody.AddForce(movementDirection*speed);
     }
 }
