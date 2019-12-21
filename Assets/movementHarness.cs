@@ -15,23 +15,23 @@ public class movementHarness : MonoBehaviour
     void Update()
     {
         movementDirection = new Vector2();
-        if (Input.KeyDown("w")) {
+        if (Input.GetKeyDown("w")) {
             movementDirection += Vector2.up;
         }
-        if (Input.KeyDown("s"))
+        if (Input.GetKeyDown("s"))
         {
             movementDirection += Vector2.down;
         }
-        if (Input.KeyDown("a"))
+        if (Input.GetKeyDown("a"))
         {
             movementDirection += Vector2.left;
         }
-        if (Input.KeyDown("d"))
+        if (Input.GetKeyDown("d"))
         {
             movementDirection += Vector2.right;
         }
-        movementDirection.Normalise();
-        Debug.log(movementDirection);
+        movementDirection.Normalize();
+        Debug.Log(movementDirection);
     }
 
     void FixedUpdate()
