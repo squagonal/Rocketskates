@@ -35,7 +35,7 @@ public class BumpMovementAiController : MonoBehaviour,IDamagable
     }
     public void handleDeath()
     {
-        Destroy(gameObject, .5f);
+        Destroy(gameObject, .2f);
     }
     private void OnCollisionStay2D(Collision2D other)
     {
