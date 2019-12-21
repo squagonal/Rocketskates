@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class movementHarness : MonoBehaviour, IMovementHarness, ISkaterHarness
+public class movementHarness : MonoBehaviour, IMovementHarness, ISkaterHarness;
 {
     Vector2  movementDirection;
     Rigidbody2D rigidBody;
@@ -13,6 +13,11 @@ public class movementHarness : MonoBehaviour, IMovementHarness, ISkaterHarness
     [SerializeField]
     public float jumpPower;
     bool grounded = true;
+
+    float ISkaterHarness.jumpPower { get => jumpPower; set => jumpPower = value; }
+    Transform ISkaterHarness.transform { get => transform; }
+    int ISkaterHarness.rotationValue { get => rotationValue; set => rotationValue = value; }
+
     // Start is called before the first frame update
     void Awake()
     {

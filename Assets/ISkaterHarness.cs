@@ -5,7 +5,7 @@ internal interface ISkaterHarness
         get; set;
     }
     Transform transform{
-        get; set;
+        get;
     }
     int rotationValue{
         get; set;
