@@ -7,11 +7,13 @@ public class playerInputController : MonoBehaviour
     Vector2  movementDirection;
     [SerializeField]
     JumpBar jumpBar;
-    movementHarness  movementHarness; 
+    IMovementHarness  movementHarness; 
+    ISkaterHarness playerHarness;
     // Start is called before the first frame update
-    void Start()
-    {
-         movementHarness = gameObject.GetComponent<movementHarness>();      
+    private void Awake() {
+    
+         movementHarness = gameObject.GetComponent<IMovementHarness>();    
+         playerHarness = gameObject.GetComponent<ISkaterHarness>();       
     }
 
     // Update is called once per frame
@@ -19,50 +21,50 @@ public class playerInputController : MonoBehaviour
     {
         movementDirection = new Vector2();
         if (Input.GetKey("w")) {
-            if(movementHarness.jumpPower < 15){
+            if(playerHarness.jumpPower < 15){
             jumpBar.value +=0.04f;
-            movementHarness.jumpPower += 0.2f;
+            playerHarness.jumpPower += 0.2f;
             }
         }
         if (Input.GetKeyUp("w" ) || Input.GetKeyUp(KeyCode.Space)) {
             jumpBar.value = 0;
-            movementHarness.jump();
-            movementHarness.jumpPower = 5;
+            movementHarness.Jump();
+            playerHarness.jumpPower = 5;
         }
         if (Input.GetKey("s"))
         {
-            movementDirection = -movementHarness.transform.up;
+            movementDirection = -playerHarness.transform.up;
         }
         if (Input.GetKey("a"))
         {
-            movementDirection = -movementHarness.transform.right;
+            movementDirection = -playerHarness.transform.right;
         }
         if (Input.GetKey("d"))
         {
-            movementDirection = movementHarness.transform.right;
+            movementDirection = playerHarness.transform.right;
         }
         if (Input.GetKey("e"))
         {
-            movementHarness.rotationValue = 1;
+            playerHarness.rotationValue = 1;
         }
         if (Input.GetKeyUp("e"))
         {
-            movementHarness.rotationValue = 0;
+            playerHarness.rotationValue = 0;
         }
         if (Input.GetKey("q"))
         {
-            movementHarness.rotationValue = -1;
+            playerHarness.rotationValue = -1;
         }
         if (Input.GetKeyUp("q"))
         {
-            movementHarness.rotationValue = 0;
+            playerHarness.rotationValue = 0;
         }
         if(movementDirection.x != 0){
-            movementHarness.skateSpeedUp();
+            playerHarness.skateSpeedUp();
         }
         else 
         {
-            movementHarness.skateSpeedDown();
+            playerHarness.skateSpeedDown();
         }
         
         movementHarness.setDirection(movementDirection);

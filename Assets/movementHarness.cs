@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class movementHarness : MonoBehaviour
+public class movementHarness : MonoBehaviour, IMovementHarness, ISkaterHarness
 {
     Vector2  movementDirection;
     Rigidbody2D rigidBody;
@@ -26,7 +26,7 @@ public class movementHarness : MonoBehaviour
         
     }
 
-    public void setDirection(Vector3 direction){
+    public void setDirection(Vector2 direction){
         movementDirection = direction;
     }
 
@@ -43,7 +43,7 @@ public class movementHarness : MonoBehaviour
            speed.x -= 5;
         }
     }
-    public void jump(){
+    public void Jump(){
         if (grounded == true) {
           rigidBody.AddForce(transform.up*((speed.x+3)*jumpPower));
           grounded = false;

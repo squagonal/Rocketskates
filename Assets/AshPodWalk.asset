@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d77f76fefc0e73d4184cf86fd1488e0f, type: 3}
+  m_Name: AshPodWalk
+  m_EditorClassIdentifier: 
+  fps: 12
+  frames:
+  - {fileID: 2915584360876218374, guid: b27070b6dcaa9894081896bdc5d22eec, type: 3}
+  - {fileID: -5294250390028991591, guid: b27070b6dcaa9894081896bdc5d22eec, type: 3}
+  - {fileID: 1519324702722125129, guid: b27070b6dcaa9894081896bdc5d22eec, type: 3}
+  - {fileID: -1864913620615225649, guid: b27070b6dcaa9894081896bdc5d22eec, type: 3}
+  - {fileID: 2191729033502599133, guid: c90274b7fc4b99948bf2fa236d7c3b09, type: 3}
+  - {fileID: -4573214792783609581, guid: c90274b7fc4b99948bf2fa236d7c3b09, type: 3}
+  - {fileID: 4473864701896627433, guid: c90274b7fc4b99948bf2fa236d7c3b09, type: 3}
+  - {fileID: -5134427353574247434, guid: c90274b7fc4b99948bf2fa236d7c3b09, type: 3}
+  framesDuration: 0100000001000000010000000100000001000000010000000100000001000000
