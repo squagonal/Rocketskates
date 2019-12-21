@@ -5,11 +5,11 @@ using UnityEngine;
 public class playerInputController : MonoBehaviour
 {
     Vector2  movementDirection;
-    movementHarness  movementHarness; 
+    IMovementHarness  movementHarness; 
     // Start is called before the first frame update
-    void Start()
-    {
-         movementHarness = gameObject.GetComponent<movementHarness>();        
+    private void Awake() {
+    
+         movementHarness = gameObject.GetComponent<IMovementHarness>();        
     }
 
     // Update is called once per frame
@@ -30,13 +30,6 @@ public class playerInputController : MonoBehaviour
         if (Input.GetKey("d"))
         {
             movementDirection += Vector2.right;
-        }
-        if(movementDirection.x != 0){
-            movementHarness.skateSpeedUp();
-        }
-        else 
-        {
-            movementHarness.skateSpeedDown();
         }
         movementDirection.Normalize();
         Debug.Log(movementDirection);
