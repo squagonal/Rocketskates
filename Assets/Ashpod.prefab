@@ -44,6 +44,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   width: 0.3
+  onCrush:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7849608837016023153}
+        m_MethodName: takeDamage
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &3099640050021385166
 GameObject:
   m_ObjectHideFlags: 0
@@ -60,7 +74,6 @@ GameObject:
   - component: {fileID: 3099640050021385165}
   - component: {fileID: 3099640050021385158}
   - component: {fileID: 7849608837016023153}
-  - component: {fileID: 262367527}
   m_Layer: 0
   m_Name: Ashpod
   m_TagString: Untagged
@@ -251,28 +264,5 @@ MonoBehaviour:
   - {x: 5.025243, y: -3.9936757}
   - {x: 5.025243, y: -3.9936757}
   onBumped:
-    m_PersistentCalls:
-      m_Calls: []
-  onCrushed:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &262367527
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3099640050021385166}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a6e25c1a110ef847a53b6c78b7bedd3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scale: 2
-  _points: []
-  onBumped:
-    m_PersistentCalls:
-      m_Calls: []
-  onCrushed:
     m_PersistentCalls:
       m_Calls: []

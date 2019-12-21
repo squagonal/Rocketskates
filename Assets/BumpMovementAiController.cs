@@ -4,7 +4,7 @@ using UnityEngine;
 using System.Linq;
 using UnityEngine.Events;
 [RequireComponent(typeof(IMovementHarness))]
-public class BumpMovementAiController : MonoBehaviour
+public class BumpMovementAiController : MonoBehaviour,IDamagable
 {
 
     Vector3 direction = Vector3.right;
@@ -35,7 +35,7 @@ public class BumpMovementAiController : MonoBehaviour
     }
     public void handleDeath()
     {
-        Destroy(gameObject, 5);
+        Destroy(gameObject, .5f);
     }
     private void OnCollisionStay2D(Collision2D other)
     {
@@ -59,5 +59,10 @@ public class BumpMovementAiController : MonoBehaviour
             }
         }
 
+    }
+
+    public void takeDamage()
+    {
+        handleDeath();
     }
 }
