@@ -8,11 +8,11 @@ using UnityEngine.Tilemaps;
 public class DynamicTile : Tile
 {
     [SerializeField]
-    int seed;
+    int seed=0;
     [SerializeField]
-    bool supress_read_write_warning;
+    bool supress_read_write_warning = true;
     [SerializeField]
-    Sprite[] textures;
+    Sprite[] textures = new Sprite[0];
     Dictionary<directionFlags, List<Sprite>> lookup;
     Dictionary<Vector2Int, directionFlags> posToDirection;
     bool dirty = true;
