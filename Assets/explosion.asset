@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d77f76fefc0e73d4184cf86fd1488e0f, type: 3}
   m_Name: explosion
   m_EditorClassIdentifier: 
-  fps: 30
+  fps: 8
   frames:
   - {fileID: 21300000, guid: ea14410b06a65a4468699b4d3570d975, type: 3}
   - {fileID: 21300000, guid: 8418e3d1bcab69b4086c6e32003a10b5, type: 3}
