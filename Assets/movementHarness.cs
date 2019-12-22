@@ -9,9 +9,11 @@ public class movementHarness : MonoBehaviour, IMovementHarness, ISkaterHarness
     Collider2D collider;
     [SerializeField]
     Vector3 speed;
+    Vector3 ISkaterHarness.speed { get => speed; set => speed = value; }
     [SerializeField]
     Vector3 gravity;
     Vector3 ISkaterHarness.gravity { get => gravity; set => gravity = value; }
+    [SerializeField]
     Vector2 gravDir;
     public int rotationValue = 0;
     [SerializeField]
@@ -42,7 +44,7 @@ public class movementHarness : MonoBehaviour, IMovementHarness, ISkaterHarness
 
     public void skateSpeedUp(){
         speed.x = 0;
-        while(speed.x < 15){
+        while(speed.x < 25){
             speed.x += 1;
         }
 
@@ -55,7 +57,7 @@ public class movementHarness : MonoBehaviour, IMovementHarness, ISkaterHarness
     }
     public void Jump(){
         if (grounded == true) {
-          rigidBody.AddForce(transform.up*((speed.x*15+1)+jumpPower));
+          rigidBody.AddForce(-gravDir*((speed.x*20+1)+jumpPower));
       }
     }
 
@@ -63,21 +65,22 @@ public class movementHarness : MonoBehaviour, IMovementHarness, ISkaterHarness
     {
         gravDir = -transform.up;
         collider.enabled = false;
-        var hips = Physics2D.Raycast(gravDir, -transform.up, 1);
+        var hips = Physics2D.Raycast(transform.position, -transform.up, 1);
+        var head = Physics2D.Raycast(transform.position, transform.up, 1);
         collider.enabled = true;
         Debug.DrawLine(transform.position, transform.position+Vector3.down*1, Color.red, 0.1f);
-        if(hips){
+        if(hips || head){
             grounded = true; 
         } else { 
             grounded = false;
         }
         if(grounded == true){
-        rigidBody.AddForce(movementDirection*speed);
+            rigidBody.AddForce(movementDirection*speed);
         } else {
             rigidBody.AddForce(movementDirection*speed/2);
         }
         rigidBody.rotation+= rotationValue;
-        Debug.Log(rigidBody.rotation);
+        Debug.Log(grounded);
     }
     void ISkaterHarness.gravswap(){
         rigidBody.AddForce(gravDir*gravity);
