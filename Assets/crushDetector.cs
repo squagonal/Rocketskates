@@ -9,6 +9,7 @@ public class crushDetector : MonoBehaviour
     float width;
     [SerializeField]
     UnityEvent onCrush;
+    Transform LastHit ;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,9 +20,10 @@ public class crushDetector : MonoBehaviour
     void FixedUpdate()
     {
         var hit= Physics2D.Raycast(transform.position+Vector3.left*width,Vector3.right,width*2);   
-        if (hit)
+        if (hit && hit.transform != LastHit)
         {
-            Debug.DrawLine(transform.position+Vector3.left*width,transform.position+Vector3.right*width, Color.green,0);
+            LastHit=hit.transform;
+            Debug.DrawLine(transform.position+Vector3.left*width,transform.position+Vector3.right*width, Color.green,0.1f);
             onCrush.Invoke();
         }
         else
