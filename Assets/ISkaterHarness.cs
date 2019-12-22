@@ -16,6 +16,9 @@ internal interface ISkaterHarness
     Vector3 gravity{
         get; set;
     }
+    Vector3 speed{
+        get; set;
+    }
     bool grounded{
         get; set;
     }
