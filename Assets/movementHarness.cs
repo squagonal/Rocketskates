@@ -6,7 +6,7 @@ public class movementHarness : MonoBehaviour, IMovementHarness, ISkaterHarness
 {
     Vector2  movementDirection;
     Rigidbody2D rigidBody;
-    Collider2D collider;
+    Collider2D col;
     [SerializeField]
     Vector3 speed;
     public int rotationValue = 0;
@@ -22,7 +22,7 @@ public class movementHarness : MonoBehaviour, IMovementHarness, ISkaterHarness
     void Awake()
     {
         rigidBody = gameObject.GetComponent<Rigidbody2D>();
-        collider = gameObject.GetComponent<Collider2D>();
+        col = gameObject.GetComponent<Collider2D>();
     }
 
     // Update is called once per frame
@@ -57,9 +57,9 @@ public class movementHarness : MonoBehaviour, IMovementHarness, ISkaterHarness
 
     void FixedUpdate()
     {
-        collider.enabled = false;
+        col.enabled = false;
         var hips = Physics2D.Raycast(transform.position, Vector2.down, 1);
-        collider.enabled = true;
+        col.enabled = true;
         Debug.DrawLine(transform.position, transform.position+Vector3.down*1, Color.red, 0.1f);
         if(hips){
             grounded = true; 

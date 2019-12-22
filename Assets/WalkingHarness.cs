@@ -12,7 +12,6 @@ public class WalkingHarness : MonoBehaviour, IMovementHarness
     public void setDirection(Vector2 direction)
     {
         this.direction=direction;
-        Debug.Log(this.direction);
     }
 
     // Start is called before the first frame update
