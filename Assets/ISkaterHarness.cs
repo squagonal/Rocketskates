@@ -12,4 +12,11 @@ internal interface ISkaterHarness
     }
     void skateSpeedUp();
     void skateSpeedDown();
+    void gravswap();
+    Vector3 gravity{
+        get; set;
+    }
+    bool grounded{
+        get; set;
+    }
 }
