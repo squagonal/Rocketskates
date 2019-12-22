@@ -8,8 +8,10 @@ public class ExtendPiston : MonoBehaviour, IToggleable
     Transform piston_head, extended_target, retracted_target;
     [SerializeField]
     float speed;
+    [SerializeField]
+    bool is_extended = false;
 
-    public bool state { get; private set; }
+    public bool state { get=>is_extended; private set =>is_extended=value; }
 
     public void ToggleState()
     {
