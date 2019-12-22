@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingOrder: 1
   m_Sprite: {fileID: -1494352897237206093, guid: cf6729e7ad3e3b04482862268e0559ee,
     type: 3}
-  m_Color: {r: 1, g: 0.7311321, b: 0.7311321, a: 1}
+  m_Color: {r: 0.6784314, g: 0.34901962, b: 0.34901962, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -100,13 +100,15 @@ MonoBehaviour:
   inactive_image: {fileID: -1494352897237206093, guid: cf6729e7ad3e3b04482862268e0559ee,
     type: 3}
   active_color: {r: 0.6522183, g: 1, b: 0.4292453, a: 1}
-  inactive_color: {r: 0.9811321, g: 0.5784977, b: 0.5784977, a: 1}
+  inactive_color: {r: 0.6792453, g: 0.3492346, b: 0.3492346, a: 1}
   onActivate:
     m_PersistentCalls:
       m_Calls: []
   onDeactivate:
     m_PersistentCalls:
       m_Calls: []
+  is_weighted: 0
+  weighted_delay: 10
 --- !u!58 &-3838411557356674459
 CircleCollider2D:
   m_ObjectHideFlags: 0
