@@ -64,10 +64,10 @@ public class movementHarness : MonoBehaviour, IMovementHarness, ISkaterHarness
     void FixedUpdate()
     {
         gravDir = -transform.up;
-        col.enabled = true;
+        col.enabled = false;
         var hips = Physics2D.Raycast(transform.position, -transform.up, 1);
         var head = Physics2D.Raycast(transform.position, transform.up, 1);
-        col.enabled = false;
+        col.enabled = true;
         Debug.DrawLine(transform.position, transform.position+Vector3.down*1, Color.red, 0.1f);
         if(hips || head){
             grounded = true; 
